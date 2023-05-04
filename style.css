@@ -1,8 +1,28 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Noto+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap');
-.light {--main-color: #fff;--secondary-color: #000;}
+@font-face {
+    font-family: 'Coolvetica';
+    font-style: normal;
+    src: url('/socialistiska-biblioteka/coolvetica_rg.otf') format('OpenType');
+}
+@font-face {
+    font-family: 'Coolvetica';
+    font-style: italic;
+    src: url('/socialistiska-biblioteka/coolvetica_c_rg.otf') format('OpenType');
+}
+
+body.tumsi {
+    --main-color: #0f2027;
+    --secondary-color: #ddd;
+    --link-color: #aaf;
+}
+
+* {transition: 0.23s ease-in-out 0s background-color, 0.23s ease-in-out 0s color, 0.23s ease-in-out 0s border-color, 0.23s ease-in-out 0s -webkit-mask;}
 
 body {
-    background: var(--main-color);
+    --main-color: #fff;
+    --secondary-color: #000;
+    --link-color: #44f;
+    background-color: var(--main-color);
     display: flex;
     flex-flow: column;
     margin: 51px 0 0;
@@ -11,7 +31,7 @@ body {
 }
 
 article {
-    background: var(--main-color);
+    background-color: var(--main-color);
     display: flex;
     flex-flow: column nowrap;
     width: 681px;
@@ -21,7 +41,10 @@ article {
     padding: 20px 30px;
     cursor: text;
     font-family: "Noto Serif";
+    color: var(--secondary-color);
 }
+
+a{color: var(--link-color);}
 
 h1 {
     font: 900 2em "Noto Sans";
@@ -42,7 +65,7 @@ ol {
     margin: 0;
 }
 
-:is(h2, p) + p, p + :is(h2, h3) {
+p + :is(h2, h3, p) {
     margin-top: 0;
 }
 
@@ -51,7 +74,7 @@ ol {
 }
 
 hr {
-    background: #000;
+    background-color: var(--secondary-color);
     border: none;
     height: 1px;
     width: 100%;
@@ -73,7 +96,7 @@ article > :last-child {
 }
 
 header {
-     background: var(--main-color);
+    background-color: var(--main-color);
     border-bottom: 1px solid var(--secondary-color);
     width: 743px;
     height: 30px;
@@ -82,6 +105,7 @@ header {
     justify-content: space-between;
     position: fixed;
     top: 0;
+    user-select: none;
 }
 
 .logo {
@@ -89,26 +113,26 @@ header {
     height: 30px;
     font: 400 32px/1 "Coolvetica", "Noto Sans";
     color: var(--secondary-color);
-    user-select: none;
 }
 
 .logo::before {
     content: '';
-    background: var(--secondary-color);
+    background-color: var(--secondary-color);
     -webkit-mask: url(data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSIxLjIiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgdmlld0JveD0iMCAwIDI4IDI3IiB3aWR0aD0iMjgiIGhlaWdodD0iMjciPjxzdHlsZT4uYXtmaWxsOiNmZWZlZmV9PC9zdHlsZT48cGF0aCBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGNsYXNzPSJhIiBkPSJtMTQgMGwzLjMgMTAuMWgxMC43bC04LjcgNi4zIDMuMyAxMC4yLTguNi02LjMtOC43IDYuMyAzLjMtMTAuMi04LjYtNi4zaDEwLjd6bS0yIDExLjhoLTYuNWw1LjIgMy44LTIgNi4xIDUuMy0zLjggNS4yIDMuOC0yLTYuMSA1LjItMy44aC02LjVsLTEuOS02LjF6Ii8+PC9zdmc+) left center / contain no-repeat;
     padding: 15px;
 }
 
-.theme-changer {
+.visual-changer {
     display: flex;
     flex-flow: row nowrap;
     align-items: center;
+    gap: 0.5em;
 }
 
-.light .theme-changer button {
+.visual-changer button {
     font: 400 14px "Noto sans";
     border: 1px solid var(--secondary-color);
-    background: var(--main-color);
+    background-color: var(--main-color);
     color: var(--secondary-color);
     cursor: pointer;
 }
@@ -123,7 +147,7 @@ button:active {
 }
 .ieksejais-vaks {
     background-size: 100%;
-    background-repeat-y: repeat;
+    background-repeat: repeat-y;
     position: absolute;
     top: 0;
     left: 0;
@@ -136,11 +160,12 @@ button:active {
     article {
         border: none;
         padding: 15px 20px;
-        max-width: calc(100% - 40px);
+        width: calc(100% - 40px);
         margin: 0;
     }
     header{
         padding: 10px 20px;
         width: calc(100% - 40px);
     }
+    .logo{font-style: italic;}
 }
