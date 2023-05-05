@@ -115,6 +115,7 @@ header {
     height: 30px;
     font: 400 32px/1 "Coolvetica", "Noto Sans";
     color: var(--secondary-color);
+    text-decoration: unset;
 }
 
 .logo::before {
