@@ -87,11 +87,16 @@ a:active {
     text-decoration-thickness: 1px;
 }
 
-article > :first-child {margin-top: 0;}
+footer {
+    background: var(--header-color);
+    padding: 10px;
+}
 
-article > :last-child {margin-bottom: 0;}
+:is(article, footer) > :first-child {margin-top: 0;}
 
-:is(article, address) > * {color: var(--secondary-color);}
+:is(article, footer) > :last-child {margin-bottom: 0;}
+
+:is(article, footer, address, p) > * {color: var(--secondary-color);}
 
 header {
     background-color: var(--header-color);
