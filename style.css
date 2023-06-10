@@ -84,10 +84,11 @@ header {
 
 [inactive] {
     opacity: 0.5;
-    pointer-events: none;
+    border-style: solid !important;
+    cursor: unset !important;
 }
 
-button:active {border-style: dashed !important;}
+button:active {border-style: dashed;}
 
 article {
     background-color: var(--main-color);
@@ -173,6 +174,6 @@ footer {
     }
 }
 
-@media screen and (max-width: 394px){
+@media screen and (max-width: 514px){
     .logo{font-size: 0px;}
 }
