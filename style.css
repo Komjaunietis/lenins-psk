@@ -48,7 +48,6 @@ header {
     position: fixed;
     top: 0;
     user-select: none;
-    z-index: 1;
 }
 
 .logo {
@@ -83,13 +82,19 @@ header {
     cursor: pointer;
 }
 
-[inactive] {
+button[inactive] {
     opacity: 0.5;
     border-style: solid !important;
     cursor: unset !important;
 }
 
 button:active {border-style: dashed;}
+
+:not(a):focus-visible {
+    outline: none;
+    border-style: dashed;
+    border-width: 1px;
+}
 
 article {
     background-color: var(--main-color);
@@ -134,10 +139,15 @@ p + :is(h2, h3, p) {margin-top: 0;}
 
 a{color: var(--link-color) !important;}
 
-a:active {
-    color: -webkit-link;
+a:not(.logo):is(:active, :focus-visible) {
     text-decoration-style: dashed;
     text-decoration-thickness: 1px;
+    outline: none;
+}
+
+a.logo:is(:active, :focus-visible) {
+    border: 1px dashed var(--secondary-color);
+    outline: none;
 }
 
 ol {margin: 0;}
@@ -157,9 +167,9 @@ footer {
 
 :is(article, footer) > :last-child {margin-bottom: 0;}
 
-:is(article, footer, address, p, figure) > * {color: var(--secondary-color);}
+:is(article, footer, address, p) > * {color: var(--secondary-color);}
 
-@media screen and (max-width: 815px){
+@media screen and (max-width: 815px) {
     header{
         padding: 10px 20px;
         width: calc(100% - 40px);
@@ -175,6 +185,6 @@ footer {
     }
 }
 
-@media screen and (max-width: 514px){
+@media screen and (max-width: 514px) {
     .logo{font-size: 0px;}
 }
