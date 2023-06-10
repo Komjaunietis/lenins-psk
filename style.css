@@ -139,13 +139,7 @@ p + :is(h2, h3, p) {margin-top: 0;}
 
 a{color: var(--link-color) !important;}
 
-a:not(.logo):is(:active, :focus-visible) {
-    text-decoration-style: dashed;
-    text-decoration-thickness: 1px;
-    outline: none;
-}
-
-a.logo:is(:active, :focus-visible) {outline: 1px dashed var(--secondary-color);}
+a:is(:active, :focus-visible) {outline: 1px dashed currentColor;}
 
 :not(a):focus-visible {
     outline: none;
