@@ -145,9 +145,12 @@ a:not(.logo):is(:active, :focus-visible) {
     outline: none;
 }
 
-a.logo:is(:active, :focus-visible) {
-    border: 1px dashed var(--secondary-color);
+a.logo:is(:active, :focus-visible) {outline: 1px dashed var(--secondary-color);}
+
+:not(a):focus-visible {
     outline: none;
+    border-style: dashed;
+    border-width: 1px;
 }
 
 ol {margin: 0;}
