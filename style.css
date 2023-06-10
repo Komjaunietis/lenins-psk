@@ -156,7 +156,7 @@ footer {
 
 :is(article, footer) > :last-child {margin-bottom: 0;}
 
-:is(article, footer, address, p) > * {color: var(--secondary-color);}
+:is(article, footer, address, p, figure) > * {color: var(--secondary-color);}
 
 @media screen and (max-width: 815px){
     header{
