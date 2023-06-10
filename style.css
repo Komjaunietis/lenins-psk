@@ -62,8 +62,7 @@ header {
 
 .logo::before {
     content: '';
-    background-color: var(--secondary-color);
-    -webkit-mask: url('data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSIxLjIiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgdmlld0JveD0iMCAwIDI4IDI3IiB3aWR0aD0iMjgiIGhlaWdodD0iMjciPjxzdHlsZT4uYXtmaWxsOiNmZWZlZmV9PC9zdHlsZT48cGF0aCBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGNsYXNzPSJhIiBkPSJtMTQgMGwzLjMgMTAuMWgxMC43bC04LjcgNi4zIDMuMyAxMC4yLTguNi02LjMtOC43IDYuMyAzLjMtMTAuMi04LjYtNi4zaDEwLjd6bS0yIDExLjhoLTYuNWw1LjIgMy44LTIgNi4xIDUuMy0zLjggNS4yIDMuOC0yLTYuMSA1LjItMy44aC02LjVsLTEuOS02LjF6Ii8+PC9zdmc+') left center / contain no-repeat;
+    background: url('/socialistiska-biblioteka/favicon.svg') left center / contain no-repeat;
     padding: 15px;
     margin-right: 2px;
 }
