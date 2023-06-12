@@ -111,7 +111,7 @@ article {
 
 :is(article, footer) > :first-child {margin-top: 0;}
 
-address {color: var(--secondary-color);}
+:is(article, footer, address, p, footer) > * {color: var(--secondary-color);}
 
 figure {display: contents;}
 
@@ -164,8 +164,6 @@ footer {
 }
 
 :is(article, footer) > :last-child {margin-bottom: 0;}
-
-:is(article, footer, address, p) > * {color: var(--secondary-color);}
 
 @media screen and (max-width: 815px) {
     header{
