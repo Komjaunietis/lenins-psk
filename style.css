@@ -150,6 +150,8 @@ a:is(:active, :focus-visible) {outline: 1px dashed currentColor;}
 
 ol {margin: 0;}
 
+ol ol {margin: 0.83em 0;}
+
 hr {
     background-color: var(--secondary-color);
     border: none;
