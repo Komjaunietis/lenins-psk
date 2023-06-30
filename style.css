@@ -136,7 +136,7 @@ h3 {
 
 p + :is(h2, h3, p) {margin-top: 0;}
 
-:is(h1, h1 + address) + p {margin-top: 0.83em;}
+:is(h1, h1 + address) + :not(address) {margin-top: 0.83em;}
 
 a{color: var(--link-color) !important;}
 
