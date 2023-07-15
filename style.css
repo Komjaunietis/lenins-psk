@@ -1,17 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Noto+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 
-@font-face {
-    font-family: 'Coolvetica';
-    font-style: normal;
-    src: url('/socialistiska-biblioteka/coolvetica_rg.otf') format('OpenType');
-}
-
-@font-face {
-    font-family: 'Coolvetica';
-    font-style: italic;
-    src: url('/socialistiska-biblioteka/coolvetica_c_rg.otf') format('OpenType');
-}
-
 *, ::before {transition:
     0.23s ease-in-out 0s background-color,
     0.23s ease-in-out 0s color,
@@ -55,7 +43,8 @@ header {
     display: flex;
     width: fit-content;
     height: 30px;
-    font: 400 32px/1 "Coolvetica", "Noto Sans";
+    font: 900 32px/1 "Noto Sans";
+    letter-spacing: -1px;
     color: var(--secondary-color) !important;
     text-decoration: unset;
     position: relative;
@@ -120,7 +109,7 @@ figcaption {opacity: 0.5;font-size: 0.9em;}
 figure[iv="cover"] + h1 {margin-top: 0.25em;}
 
 h1 {
-    font: 900 2em "Noto Sans";
+    font: 700 2em "Noto Sans";
     margin-bottom: 0;
 }
 
@@ -173,8 +162,6 @@ footer {
         width: calc(100% - 40px);
     }
     
-    .logo{font-style: italic;}
-    
     article {
         border: none;
         padding: 15px 20px;
@@ -183,6 +170,6 @@ footer {
     }
 }
 
-@media screen and (max-width: 514px) {
+@media screen and (max-width: 642px) {
     .logo{font-size: 0px;}
 }
