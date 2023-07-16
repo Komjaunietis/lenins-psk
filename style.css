@@ -7,7 +7,7 @@
     0.23s ease-in-out 0s -webkit-mask;
 }
 
-body:is(.gaisi.tumsi, :not([class]), .tumsi) {
+body:not(.gaisi) {
     --main-color: #1d1d1d;
     --secondary-color: #fff;
     --header-color: #343434;
