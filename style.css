@@ -1,5 +1,23 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Noto+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 
+@font-face {
+    font-family: 'Noto Sans SemCond';
+    font-style: normal;
+    src: url('/socialistiska-biblioteka/noto_sans_semcond_900.ttf') format('TrueType');
+}
+
+@font-face {
+    font-family: 'Noto Sans Cond';
+    font-style: normal;
+    src: url('/socialistiska-biblioteka/noto_sans_cond_900.ttf') format('TrueType');
+}
+
+@font-face {
+    font-family: 'Noto Sans ExtCond';
+    font-style: normal;
+    src: url('/socialistiska-biblioteka/noto_sans_extcond_900.ttf') format('TrueType');
+}
+
 *, ::before {transition:
     0.23s ease-in-out 0s background-color,
     0.23s ease-in-out 0s color,
@@ -172,4 +190,20 @@ footer {
 
 @media screen and (max-width: 642px) {
     .logo{font-size: 0px;}
+}
+
+@media screen and (max-width: 660px) {
+    .logo{font-family: "Noto Sans SemCond";}
+}
+
+@media screen and (max-width: 615px) {
+    .logo{font-family: "Noto Sans Cond";}
+}
+
+@media screen and (max-width: 585px) {
+    .logo{font-family: "Noto Sans ExtCond";}
+}
+
+@media screen and (max-width: 560px) {
+    .logo{font-size: 15px;white-space: break-spaces;width: min-content;}
 }
