@@ -201,9 +201,13 @@ footer {
 }
 
 @media screen and (max-width: 560px) {
-    .logo{font-size: 15px;white-space: break-spaces;width: min-content;}
+    .logo{
+        font: 900 15px/1 "Noto Sans";
+        white-space: break-spaces;
+        width: min-content;
+    }
 }
 
-@media screen and (max-width: 350px) {
+@media screen and (max-width: 370px) {
     .logo{font-size: 0px;}
 }
