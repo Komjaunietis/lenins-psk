@@ -118,7 +118,7 @@ article {
 
 :is(article, footer) > :first-child {margin-top: 0;}
 
-:is(address, article, p, ol, ul, li, footer) > * {color: var(--secondary-color);}
+:is(address, article, p, ol, ul, li, footer) > *, figcaption {color: var(--secondary-color);}
 
 figure {display: contents;}
 
