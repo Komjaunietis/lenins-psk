@@ -97,12 +97,6 @@ button[inactive] {
 
 button:active {border-style: dashed;}
 
-:not(a):focus-visible {
-    outline: none;
-    border-style: dashed;
-    border-width: 1px;
-}
-
 article {
     background-color: var(--main-color);
     display: flex;
@@ -186,10 +180,7 @@ details {
     border-bottom: 1px var(--link-color) dotted;
     width: 100%;
     hyphens: auto;
-}
-
-.saturs :not(summary):is(:active, :focus-visible, :hover), .saturs :not(summary):is(:active, :focus-visible, :hover) > * {
-    color: var(--secondary-color) !important;
+    padding: 2px 0;
 }
 
 footer {
