@@ -18,11 +18,10 @@
     src: url('/socialistiska-biblioteka/noto_sans_extcond_900.ttf') format('TrueType');
 }
 
-*, ::before {transition:
+* {transition:
     0.23s ease-in-out 0s background-color,
     0.23s ease-in-out 0s color,
-    0.23s ease-in-out 0s border-color,
-    0.23s ease-in-out 0s -webkit-mask;
+    0.23s ease-in-out 0s border-color
 }
 
 body:not(.gaisi) {
@@ -118,7 +117,9 @@ article {
 
 :is(article, footer) > :first-child {margin-top: 0;}
 
-:is(address, article, p, ol, ul, li, footer) > *, figcaption {color: var(--secondary-color);}
+:is(address, article, p, ol, ul, li, footer) > *, figcaption, summary {color: var(--secondary-color);}
+
+a > *{color: var(--link-color) !important;}
 
 figure {display: contents;}
 
@@ -165,6 +166,30 @@ hr {
     height: 1px;
     width: 100%;
     margin: 0;
+}
+
+summary {
+    font: 700 1em "Noto Sans";
+    margin-bottom: 0;
+    cursor: default;
+}
+
+details {
+    width: 100%;
+    margin: 10px 0 0;
+}
+
+.saturs>a {
+    display: block;
+    text-decoration: unset;
+    outline: none;
+    border-bottom: 1px var(--link-color) dotted;
+    width: 100%;
+    hyphens: auto;
+}
+
+.saturs :not(summary):is(:active, :focus-visible, :hover), .saturs :not(summary):is(:active, :focus-visible, :hover) > * {
+    color: var(--secondary-color) !important;
 }
 
 footer {
