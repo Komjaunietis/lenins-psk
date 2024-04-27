@@ -1,4 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Noto+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@600;700;900&family=Noto+Sans:ital,wght@0,600;0,700;0,900;1,600;1,700;1,900&family=Noto+Serif+JP:wght@400;700&family=Noto+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Symbols:wght@100..900&display=swap');
 
 @font-face {
     font-family: 'Noto Sans SemCond';
@@ -18,29 +19,71 @@
     src: url('/socialistiska-biblioteka/noto_sans_extcond_900.ttf') format('TrueType');
 }
 
-* {transition:
-    0.23s ease-in-out 0s background-color,
-    0.23s ease-in-out 0s color,
-    0.23s ease-in-out 0s border-color
+::view-transition-old(root),
+::view-transition-new(root) {
+    animation-duration: 0.15s;
 }
 
-body:not(.gaisi) {
+::view-transition-old(motivs) {
+    animation-duration: 0.23s;
+    animation-timing-function: ease-in-out;
+}
+
+@supports (view-transition-name: motivs) {
+    :not(img),
+    a.logo::before {
+        transition: background-color 0.23s ease-in-out,
+                    color 0.23s ease-in-out,
+                    border-color 0.23s ease-in-out !important;
+        view-transition-name: motivs;
+    }
+}
+
+body.gaisi {
+    --main-color: #eff4ff;
+    --secondary-color: #000000;
+    --header-color: #d7dbe5;
+    color-scheme: light;
+}
+
+body.tumsi {
     --main-color: #1d1d1d;
-    --secondary-color: #fff;
+    --secondary-color: #ffffff;
     --header-color: #343434;
+    color-scheme: dark;
+}
+
+:not(img),
+::before {
+    transition:
+        0.23s ease-in-out 0s background-color,
+        0.23s ease-in-out 0s background-image,
+        0.23s ease-in-out 0s background-size,
+        0.23s ease-in-out 0s color,
+        0.23s ease-in-out 0s border-color;
+}
+
+:not(img)::selection {
+    background: var(--header-color);
+}
+
+footer :not(img)::selection {
+    background: var(--main-color);
 }
 
 body {
-    --main-color: #eff4ff;
-    --secondary-color: #000;
-    --header-color: #d7dbe5;
-    --link-color: #2d89ef;
     background-color: var(--main-color);
     display: flex;
     flex-flow: column;
-    margin: 50px 0 0;
-    min-height: calc(100vh - 50px);
+    margin: 0;
+    height: min(100vh, 100dvh);
     position: relative;
+    overflow: hidden;
+
+    --main-color: #eff4ff;
+    --secondary-color: #000000;
+    --header-color: #d7dbe5;
+    color-scheme: light;
 }
 
 header {
@@ -56,22 +99,29 @@ header {
     z-index: 1;
 }
 
-.logo {
+a.logo[href] {
     display: flex;
     width: fit-content;
     height: 30px;
-    font: 900 32px/1 "Noto Sans";
+    font: 900 32px/1 "Noto Sans", sans-serif;
     letter-spacing: -1px;
-    color: var(--secondary-color) !important;
+    color: var(--secondary-color);
     text-decoration: unset;
     position: relative;
 }
 
-.logo::before {
+a.logo::before {
     content: '';
-    background: url('/socialistiska-biblioteka/favicon.svg') left center / contain no-repeat;
+    color: #0000;
+    mask: url('/socialistiska-biblioteka/favicon.svg') left center / contain no-repeat;
+    background-color: var(--secondary-color);
     padding: 15px;
     margin-right: 2px;
+}
+
+a.logo:is(:active, :focus-visible) {
+    outline: 1px dashed #ffffff;
+    outline-offset: 3px;
 }
 
 .visual-changer {
@@ -82,67 +132,131 @@ header {
 }
 
 .visual-changer button {
-    font: 400 14px "Noto sans";
-    border: 1px solid var(--secondary-color);
-    background: transparent;
-    color: var(--secondary-color);
+    border: 0;
+    width: 30px;
+    height: 30px;
+    padding: 0;
+    box-sizing: content-box;
     cursor: pointer;
 }
 
-button[inactive] {
-    opacity: 0.5;
-    border-style: solid !important;
-    cursor: unset !important;
+[notbook="true"] button#mainit-skatu {
+    opacity: 0.25;
+    cursor: not-allowed;
 }
 
-button:active {border-style: dashed;}
+button#mainit-motivu {
+    background: url('/socialistiska-biblioteka/gaisais-motivs.svg') center / 30px no-repeat;
+}
+
+body.tumsi button#mainit-motivu {
+    background-image: url('/socialistiska-biblioteka/tumsais-motivs.svg');
+}
+
+button#mainit-skatu {
+    mask: url('/socialistiska-biblioteka/raksts.svg') center / 30px no-repeat;
+    background: var(--secondary-color, #000);
+}
+
+body.gramata button#mainit-skatu {
+    mask-image: url('/socialistiska-biblioteka/gramata.svg');
+}
 
 article {
-    background-color: var(--main-color);
     display: flex;
     flex-flow: column nowrap;
-    width: 741px;
-    height: fit-content;
-    margin: 0 auto;
-    padding: 20px 30px;
-    cursor: text;
-    font-family: "Noto Serif";
+    width: calc(100% - 30px);
+    height: calc(min(100vh, 100dvh) - 90px);
+    margin: 50px 0 0;
+    padding: 20px 15px;
+    font-family: "Noto Serif", "Noto Serif JP";
+    overflow: hidden overlay;
 }
 
-:is(article, footer) > :first-child {margin-top: 0;}
+article * {
+    width: min(741px, 100%);
+    margin-left: auto;
+    margin-right: auto;
+}
 
-:is(address, article, p, ol, ul, li, footer) > *, figcaption, summary {color: var(--secondary-color);}
+.gramata article * {
+    hyphens: auto;
+    text-align: justify;
+}
 
-a > *{color: var(--link-color) !important;}
+:is(article, footer)> :first-child {
+    margin-top: 0;
+}
 
-figure {display: contents;}
+:is(address, article, p, ol, ul, li, footer, tr, td)>*,
+figcaption,
+summary {
+    color: var(--secondary-color);
+}
+body.gramata article * {
+    color: var(--secondary-color) !important;
+    text-decoration: none !important;
+}
 
-figcaption {opacity: 0.5;font-size: 0.9em;}
+address [iv="author"]{
+    display: none;
+}
 
-figure[iv="cover"] + h1 {margin-top: 0.25em;}
+figure {
+    display: contents;
+}
+
+figure[iv="cover"] img {
+    max-height: 66vh;
+    width: fit-content;
+    max-width: min(741px, 100%);
+}
+
+figcaption {
+    opacity: 0.5;
+    font-size: 0.9em;
+}
+
+
+figure[iv="cover"]+h1 {
+    margin-top: 0.25em;
+}
 
 h1 {
-    font: 700 2em "Noto Sans";
+    font: 700 2em "Noto Sans", "Noto Sans Symbols", sans-serif;
     margin-bottom: 0;
 }
 
 h2 {
-    font: 700 1.5em "Noto Sans";
+    font: 700 1.5em "Noto Sans", "Noto Sans Symbols", sans-serif;
     margin-bottom: 0;
 }
 
 h3 {
-    font: 600 1.25em "Noto Sans";
+    font: 600 1.25em "Noto Sans", "Noto Sans Symbols", sans-serif;
     margin-bottom: 0;
 }
 
-p + :is(h2, h3, p) {margin-top: 0;}
+.gramata :is(h2, h3) {
+    text-align: center;
+}
 
-:is(h1, h1 + address) + :not(address) {margin-top: 0.83em;}
+p+ :is(h2, h3, p) {
+    margin-top: 0;
+}
 
-a{color: var(--link-color) !important;}
+:is(h1, h1 + address)+ :not(address) {
+    margin-top: 0.83em;
+}
 
-a:is(:active, :focus-visible) {outline: 1px dashed currentColor;}
+a[href],
+a[href]>* {
+    color: #2d89ef;
+}
+
+a[href]:is(:active, :focus-visible):not(.logo) {
+    text-decoration: underline 1px dashed currentColor;
+}
 
 :not(a):focus-visible {
     outline: none;
@@ -150,9 +264,21 @@ a:is(:active, :focus-visible) {outline: 1px dashed currentColor;}
     border-width: 1px;
 }
 
-ol {margin: 0;}
+ol {
+    margin-block: 0;
+    padding-left: 30px;
+    width: min(711px, calc(100% - 30px));
+}
 
-ol ol {margin: 0.83em 0;}
+ol ol {
+    margin: 0.83em 0;
+}
+
+p,
+ol,
+ul {
+    margin-block: 16px;
+}
 
 hr {
     background-color: var(--secondary-color);
@@ -163,67 +289,150 @@ hr {
 }
 
 summary {
-    font: 700 1em "Noto Sans";
+    font: 700 1em "Noto Sans", "Noto Sans Symbols", sans-serif;
     margin-bottom: 0;
     cursor: default;
 }
 
 details {
-    width: 100%;
-    margin: 10px 0 0;
+    margin: 10px auto 0;
 }
 
 .saturs>a {
     display: block;
     text-decoration: unset;
     outline: none;
-    border-bottom: 1px var(--link-color) dotted;
+    border-bottom: 1px currentColor dotted;
     width: 100%;
-    hyphens: auto;
     padding: 2px 0;
+}
+
+.saturs>a[href]:is(:active, :focus-visible) {
+    border-bottom: 1px dashed currentColor;
 }
 
 footer {
     background: var(--header-color);
     padding: 10px;
+    box-sizing: border-box;
 }
 
-:is(article, footer) > :last-child {margin-bottom: 0;}
+:is(article, footer)> :last-child {
+    margin-bottom: 0;
+}
+
+.raksts [skats="gramata"] {
+    display: none;
+}
+
+.gramata [skats="raksts"] {
+    display: none;
+}
+
+table.titullapa[skats="gramata"] {
+    min-height: calc(100dvh - 100px);
+    border: 1px solid var(--secondary-color);
+}
+
+table.titullapa[skats="gramata"] tr:not(:nth-child(2)) {
+    height: 12%;
+}
+
+table.titullapa[skats="gramata"] tr:nth-child(2) td {
+    font: 900 min(64px, 10vw) "Noto Sans", "Noto Sans Symbols", sans-serif;
+    padding: 0 10px;
+}
+
+table.titullapa[skats="gramata"] td {
+    font: 500 min(26px, 4.1vw) "Noto Serif", "Noto Serif JP", serif;
+    hyphens: none;
+    text-align: center;
+}
 
 @media screen and (max-width: 815px) {
-    header{
+    header {
         padding: 10px 20px;
         width: calc(100% - 40px);
     }
-    
+
     article {
-        border: none;
-        padding: 15px 20px;
+        padding: 20px;
         width: calc(100% - 40px);
-        margin: 0;
+        height: calc(min(100vh, 100dvh) - 80px);
     }
 }
 
-@media screen and (max-width: 660px) {
-    .logo{font-family: "Noto Sans SemCond";}
+@media screen and (max-width: 520px) {
+    a.logo {
+        font-family: "Noto Sans SemCond";
+    }
 }
 
-@media screen and (max-width: 615px) {
-    .logo{font-family: "Noto Sans Cond";}
+@media screen and (max-width: 484px) {
+    a.logo {
+        font-family: "Noto Sans Cond";
+    }
 }
 
-@media screen and (max-width: 585px) {
-    .logo{font-family: "Noto Sans ExtCond";}
+@media screen and (max-width: 457px) {
+    a.logo {
+        font-family: "Noto Sans ExtCond";
+    }
 }
 
-@media screen and (max-width: 560px) {
-    .logo{
-        font: 900 15px/1 "Noto Sans";
+@media screen and (max-width: 434px) {
+    a.logo {
+        font: 900 15px/1 "Noto Sans", "Noto Sans Symbols", sans-serif;
         white-space: break-spaces;
         width: min-content;
     }
 }
 
 @media screen and (max-width: 370px) {
-    .logo{font-size: 0px;}
+    .logo {
+        font-size: 0px;
+    }
+}
+
+@media print {
+    header {
+        display: none;
+    }
+
+    body {
+        overflow: hidden auto;
+    }
+
+    article {
+        overflow: unset;
+        margin: 0;
+        padding: 0;
+    }
+
+    [skats="gramata"] {
+        display: revert !important;
+    }
+
+    [skats="raksts"] {
+        display: none !important;
+    }
+
+    * {
+        width: 100% !important;
+        max-width: 100%;
+        hyphens: auto;
+        text-align: justify;
+    }
+
+    table.titullapa[skats="gramata"] {
+        min-height: 100vh;
+        margin: 0;
+        max-width: calc(100% - 2px);
+    }
+
+    h2,
+    h3 {
+        text-align: center;
+        hyphens: none;
+    }
 }

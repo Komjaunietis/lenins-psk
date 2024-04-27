@@ -7,18 +7,20 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2, user-scalable=yes">
 		<meta property="og:site_name" content="Sociālistiskā bibliotēka">
 		<meta property="og:locale" content="lv_LV">
+		<meta name="robots" content="noindex">
+        <meta name="view-transition" content="same-origin">
 	</head>
-	<body>
+	<body notbook="true">
 		<header>
 			<a class="logo" href="/socialistiska-biblioteka/">Sociālistiskā bibliotēka</a>
 			<div class="visual-changer">
-				<button id="mainit-motivu">Mainīt motīvu</button>
-				<button id="mainit-skatu" title="Pieejams tikai grāmatām" tabindex="-1" inactive>Mainīt skatu</button>
+				<button id="mainit-skatu" title="Pieejams tikai grāmatām" tabindex="-1"></button>
+				<button id="mainit-motivu"></button>
 				<script src="/socialistiska-biblioteka/motivs.js"></script>
 			</div>
 		</header>
-		<error style="display: flex;height: calc(100vh - 50px);align-items: center;justify-content: center;font: 900 5em/1 'Noto Sans';text-align: center;flex-direction: column;color: var(--secondary-color);">404
-			<shrug style="font: 400 0.25em 'Noto Sans';color: var(--secondary-color);">¯\_(ツ)_/¯</shrug>
+		<error style="display: flex;height: calc(100vh - 50px);margin-top: 50px;align-items: center;justify-content: center;font: 900 5em/1 'Noto Sans';text-align: center;flex-direction: column;color: var(--secondary-color);">404
+			<shrug style="font: 400 0.25em/1 'Noto Sans';color: var(--secondary-color);">¯\_(ツ)_/¯</shrug>
 		</error>
 	</body>
 </html>
